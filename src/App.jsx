@@ -59,11 +59,19 @@ export default function App() {
   const listaMeses = Object.keys(mesesData);
 
  const obtenerNombreMes = (key) => {
+    const claveLimpia = String(key || "").trim().toLowerCase();
+    
     const mapaMeses = {
-      "6": "Junio", "7": "Julio", "8": "Agosto", "9": "Septiembre", "10": "Octubre", "11": "Noviembre", "12": "Diciembre",
-      "Junio": "Junio", "Julio": "Julio", "Agosto": "Agosto", "Septiembre": "Septiembre", "Octubre": "Octubre", "Noviembre": "Noviembre", "Diciembre": "Diciembre"
+      "6": "Junio", "junio": "Junio",
+      "7": "Julio", "julio": "Julio",
+      "8": "Agosto", "agosto": "Agosto",
+      "9": "Septiembre", "septiembre": "Septiembre",
+      "10": "Octubre", "octubre": "Octubre",
+      "11": "Noviembre", "noviembre": "Noviembre",
+      "12": "Diciembre", "diciembre": "Diciembre"
     };
-    return mapaMeses[String(key).trim()] || `Mes ${key}`;
+
+    return mapaMeses[claveLimpia] || `Mes ${key}`;
   };
 
   const solventesMes = Number(cobD.solventes ?? 0);
